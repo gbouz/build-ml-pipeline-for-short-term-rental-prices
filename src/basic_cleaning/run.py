@@ -4,6 +4,7 @@ Download from W&B the raw dataset and apply some basic data cleaning, exporting 
 """
 import argparse
 import logging
+import os
 import tempfile
 
 import pandas as pd
@@ -53,7 +54,7 @@ def go(args):
 
         artifact = wandb.Artifact(
             name=args.output_artifact,
-            type=args.artifact_type,
+            type=args.output_type,
             description=args.output_description,
         )
         artifact.add_file(temp_path)
