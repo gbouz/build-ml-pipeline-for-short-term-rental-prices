@@ -78,6 +78,6 @@ def test_price_range(data, min_price, max_price):
     """
     Test whether the values for price are between the appropriate range
     """
-    assert df['price'].between(min_price, max_price).all(), (
+    assert data['price'].between(min_price, max_price).all(), (
         f"Not all prices are between {min_price} and {max_price}"
     )
