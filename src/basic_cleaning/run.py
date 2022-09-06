@@ -40,6 +40,10 @@ def go(args):
     logger.info(f"Converting datetime columns to datetime type")
     df['last_review'] = pd.to_datetime(df['last_review'])
 
+    # Drop outlier geolocation coords
+    idx = df['longitude'].between(-74.25, -73.50) & df['latitude'].between(40.5, 41.2)
+    df = df[idx].copy()
+
     # Save the artifacts. We use a temporary directory so we do not leave
     # any trace behind
     with tempfile.TemporaryDirectory() as tmp_dir:
